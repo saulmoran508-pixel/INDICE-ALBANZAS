@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Himnario</title>
+</head>
+<style>
+body {
+    font-family: 'Segoe UI', Arial 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+/* TITULOS */
+h1 {
+    margin-top: 30px;
+    font-size: 32px;
+}
+
+h2 {
+    color: #cbd5f5;
+}
+
+/* CONTENEDOR */
+#menu, #adoracion, #avivamiento {
+    padding: 20px;
+}
+
+/* BOTONES */
+button {
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #16a34a;
+    transform: scale(1.05);
+}
+
+/* LISTA */
+ol {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: auto;
+}
+
+/* ITEMS */
+li {
+    margin: 10px 0;
+}
+
+/* LINKS (CANCIONES) */
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    display: block;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+a:hover {
+    background: #22c55e;
+    transform: scale(1.03);
+}
+</style>
+<style>
+#menu, #adoracion, #avivamiento {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+<style>
+/* SPLASH */
+#splash {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* LOGO ANIMACIÓN */
+#logo {
+    width: 200px;
+    animation: girar 2s ease;
+}
+
+/* ANIMACIÓN ESPIRAL */
+@keyframes girar {
+    0% {
+        transform: rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(720deg) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(1080deg) scale(1);
+    }
+}
+</style>
+
+<body>
+
+    <!-- PANTALLA DE INICIO -->
+<div id="splash">
+    <img src="pdc.png.jpg" id="logo">
+</div>
+
+<!-- 🔥 MENÚ PRINCIPAL -->
+<div id="menu">
+    <h1>Himnario</h1>
+    <h2>Selecciona tipo de alabanzas</h2>
+
+    <button onclick="mostrar('adoracion')">Adoración</button>
+    <button onclick="mostrar('avivamiento')">Avivamiento</button>
+     <button onclick="mostrar('cumpleaños')">cumpleaños</button>
+</div>
+
+<!-- 🎵 ADORACIÓN -->
+<div id="adoracion" style="display:none;">
+    <h1>Alabanzas de Adoración</h1>
+
+    <ol id="listaAdoracion">
+        <li><a href="alabanza1.html">GRACIAS SUBLIME</a></li>
+        <li><a href="alabanza3.html">A TUS PIES</a></li>
+        <li><a href="alabanza7.html">TU FIDELIDAD</a></li>
+    </ol>
+
+    <button onclick="volver()">⬅ Volver</button>
+</div>
+
+<!-- 🔥 AVIVAMIENTO -->
+<div id="avivamiento" style="display:none;">
+    <h1>Alabanzas de Avivamiento</h1>
+
+    <ol id="listaAvivamiento">
+        <li><a href="alabanza2.html">OH ALMA MIA</a></li>
+        <li><a href="alabanza4.html">ERES TODO PODEROSO</a></li>
+    </ol>
+
+    <button onclick="volver()">⬅ Volver</button>
+</div>
+
+<!-- 🎵 cumpleaños -->
+<div id="adoracion" style="display:none;">
+    <h1>Alabanzas de cumpleaños</h1>
+
+    <ol id="listadecumpleaños">
+        <li><a href="alabanza5.html">feliz cumpleaños</a></li>
+        <li><a href="alabanza6.html"></a></li>
+    </ol>
+
+    <button onclick="volver()">⬅ Volver</button>
+
+<script>
+// 🔁 MOSTRAR SECCIÓN
+function mostrar(tipo) {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById(tipo).style.display = "block";
+}
+
+// 🔙 VOLVER AL MENÚ
+function volver() {
+    document.getElementById("menu").style.display = "block";
+    document.getElementById("adoracion").style.display = "none";
+    document.getElementById("avivamiento").style.display = "none";
+}
+
+// 🔤 ORDENAR LISTAS
+function ordenarLista(id) {
+    let lista = document.getElementById(id);
+    let items = Array.from(lista.getElementsByTagName("li"));
+
+    items.sort((a, b) => {
+        let textoA = a.innerText.toUpperCase();
+        let textoB = b.innerText.toUpperCase();
+        return textoA.localeCompare(textoB);
+    });
+
+    items.forEach(item => lista.appendChild(item));
+}
+
+// Ordenar ambas listas
+ordenarLista("listaAdoracion");
+ordenarLista("listaAvivamiento");
+
+</script>
+
+</body>
+</html>
+<script>
+// Detectar parámetro en la URL
+const params = new URLSearchParams(window.location.search);
+const tipo = params.get("tipo");
+
+if (tipo === "adoracion" || tipo === "avivamiento") {
+    mostrar(tipo);
+}
+</script>
+
+</body>
+</html>
+
+<script>
+// Esperar 4 segundos y mostrar contenido
+setTimeout(() => {
+    document.getElementById("splash").style.display = "none";
+}, 4000);
+</script>
