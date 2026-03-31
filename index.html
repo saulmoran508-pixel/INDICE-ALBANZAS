@@ -2,32 +2,29 @@
 <html>
 <head>
     <title>Himnario</title>
-</head>
+
 <style>
 body {
-    font-family: 'Segoe UI', Arial 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e3a8a);
     color: white;
     text-align: center;
     margin: 0;
 }
 
-/* TITULOS */
 h1 {
     margin-top: 30px;
-    font-size: 32px;
 }
 
 h2 {
     color: #cbd5f5;
 }
 
-/* CONTENEDOR */
-#menu, #adoracion, #avivamiento, #cumpleaños{
+#menu, #adoracion, #avivamiento, #cumpleaños {
     padding: 20px;
+    animation: fadeIn 0.5s ease;
 }
 
-/* BOTONES */
 button {
     padding: 15px 25px;
     margin: 10px;
@@ -37,15 +34,8 @@ button {
     background: #22c55e;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    background: #16a34a;
-    transform: scale(1.05);
-}
-
-/* LISTA */
 ol {
     list-style: none;
     padding: 0;
@@ -53,130 +43,75 @@ ol {
     margin: auto;
 }
 
-/* ITEMS */
-li {
-    margin: 10px 0;
-}
-
-/* LINKS (CANCIONES) */
 a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
     padding: 12px;
     border-radius: 12px;
     display: block;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
+    margin: 10px 0;
 }
 
-a:hover {
-    background: #22c55e;
-    transform: scale(1.03);
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-<style>
-#menu, #adoracion, #avivamiento, #cumpleaños {
-    animation: fadeIn 0.5s ease;
+</style>
 
-}
+</head>
+
 <body>
 
-<!-- 🔥 MENÚ PRINCIPAL -->
 <div id="menu">
     <h1>Himnario</h1>
     <h2>Selecciona tipo de alabanzas</h2>
 
     <button onclick="mostrar('adoracion')">Adoración</button>
     <button onclick="mostrar('avivamiento')">Avivamiento</button>
-    <button onclick="mostrar('cumpleaños')">cumpleaños</button>
+    <button onclick="mostrar('cumpleaños')">Cumpleaños</button>
 </div>
 
-<!-- 🎵 ADORACIÓN -->
 <div id="adoracion" style="display:none;">
-    <h1>Alabanzas de Adoración</h1>
-
+    <h1>Adoración</h1>
     <ol id="listaAdoracion">
-        <li><a href="alabanza1.html">GRACIAS SUBLIME</a></li>
-        <li><a href="alabanza3.html">A TUS PIES</a></li>
-        <li><a href="alabanza7.html">TU FIDELIDAD</a></li>
+        <li><a href="#">GRACIAS SUBLIME</a></li>
     </ol>
-
     <button onclick="volver()">⬅ Volver</button>
 </div>
 
-<!-- 🔥 AVIVAMIENTO -->
 <div id="avivamiento" style="display:none;">
-    <h1>Alabanzas de Avivamiento</h1>
-
+    <h1>Avivamiento</h1>
     <ol id="listaAvivamiento">
-        <li><a href="alabanza2.html">OH ALMA MIA</a></li>
-        <li><a href="alabanza4.html">ERES TODO PODEROSO</a></li>
-        <li><a href="alabanza8.html">GRANDE ES EL SEÑOR</a></li>
-         <li><a href="alabanza9.html">OLEO DE ALEGRIA</a></li>
+        <li><a href="#">OH ALMA MIA</a></li>
     </ol>
-
     <button onclick="volver()">⬅ Volver</button>
 </div>
 
-<!-- 🎵 cumpleaños -->
 <div id="cumpleaños" style="display:none;">
-    <h1>Alabanzas de cumpleaños</h1>
-
-    <ol id="listadecumpleaños">
-        <li><a href="alabanza5.html">feliz cumpleaños</a></li>
-        <li><a href="alabanza6.html"></a></li>
+    <h1>Cumpleaños</h1>
+    <ol id="listacumpleaños">
+        <li><a href="#">Feliz cumpleaños</a></li>
     </ol>
-
     <button onclick="volver()">⬅ Volver</button>
+</div>
 
-// 🔁 MOSTRAR SECCIÓN
+<script>
+// Mostrar sección
 function mostrar(tipo) {
     document.getElementById("menu").style.display = "none";
     document.getElementById(tipo).style.display = "block";
 }
 
-// 🔙 VOLVER AL MENÚ
+// Volver
 function volver() {
     document.getElementById("menu").style.display = "block";
     document.getElementById("adoracion").style.display = "none";
     document.getElementById("avivamiento").style.display = "none";
     document.getElementById("cumpleaños").style.display = "none";
 }
-
-// 🔤 ORDENAR LISTAS
-function ordenarLista(id) {
-    let lista = document.getElementById(id);
-    let items = Array.from(lista.getElementsByTagName("li"));
-
-    items.sort((a, b) => {
-        let textoA = a.innerText.toUpperCase();
-        let textoB = b.innerText.toUpperCase();
-        return textoA.localeCompare(textoB);
-    });
-
-    items.forEach(item => lista.appendChild(item));
-}
-
-// Ordenar ambas listas
-ordenarLista("listaAdoracion");
-ordenarLista("listaAvivamiento");
-ordenarLista("listacumpleaños");
-
 </script>
 
 </body>
 </html>
-<script>
-// Detectar parámetro en la URL
-const params = new URLSearchParams(window.location.search);
-const tipo = params.get("tipo");
-
-if (tipo === "adoracion" || tipo === "avivamiento") {
-    mostrar(tipo);
-}
-
-</body>
-</html>
-
 
