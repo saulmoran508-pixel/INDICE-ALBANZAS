@@ -75,21 +75,10 @@ a:hover {
     background: #22c55e;
     transform: scale(1.03);
 }
-</style>
 <style>
 #menu, #adoracion, #avivamiento, #cumpleaños {
     animation: fadeIn 0.5s ease;
-}
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 <body>
 
@@ -131,7 +120,7 @@ a:hover {
 </div>
 
 <!-- 🎵 cumpleaños -->
-<div id="adoracion" style="display:none;">
+<div id="cumpleaños" style="display:none;">
     <h1>Alabanzas de cumpleaños</h1>
 
     <ol id="listadecumpleaños">
@@ -186,7 +175,6 @@ const tipo = params.get("tipo");
 if (tipo === "adoracion" || tipo === "avivamiento") {
     mostrar(tipo);
 }
-</script>
 
 </body>
 </html>
