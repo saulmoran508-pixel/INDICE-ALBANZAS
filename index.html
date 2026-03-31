@@ -152,6 +152,7 @@ function volver() {
     document.getElementById("menu").style.display = "block";
     document.getElementById("adoracion").style.display = "none";
     document.getElementById("avivamiento").style.display = "none";
+    document.getElementById("cumpleaños").style.display = "none";
 }
 
 // 🔤 ORDENAR LISTAS
@@ -171,6 +172,7 @@ function ordenarLista(id) {
 // Ordenar ambas listas
 ordenarLista("listaAdoracion");
 ordenarLista("listaAvivamiento");
+ordenarLista("listacumpleaños");
 
 </script>
 
@@ -189,9 +191,4 @@ if (tipo === "adoracion" || tipo === "avivamiento") {
 </body>
 </html>
 
-<script>
-// Esperar 4 segundos y mostrar contenido
-setTimeout(() => {
-    document.getElementById("splash").style.display = "none";
-}, 4000);
-</script>
+
