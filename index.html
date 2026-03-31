@@ -23,7 +23,7 @@ h2 {
 }
 
 /* CONTENEDOR */
-#menu, #adoracion, #avivamiento {
+#menu, #adoracion, #avivamiento, #cumpleaños{
     padding: 20px;
 }
 
@@ -77,7 +77,7 @@ a:hover {
 }
 </style>
 <style>
-#menu, #adoracion, #avivamiento {
+#menu, #adoracion, #avivamiento, #cumpleaños {
     animation: fadeIn 0.5s ease;
 }
 
@@ -91,49 +91,7 @@ a:hover {
         transform: translateY(0);
     }
 }
-</style>
-
-<style>
-/* SPLASH */
-#splash {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-/* LOGO ANIMACIÓN */
-#logo {
-    width: 200px;
-    animation: girar 2s ease;
-}
-
-/* ANIMACIÓN ESPIRAL */
-@keyframes girar {
-    0% {
-        transform: rotate(0deg) scale(0);
-        opacity: 0;
-    }
-    50% {
-        transform: rotate(720deg) scale(1.2);
-        opacity: 1;
-    }
-    100% {
-        transform: rotate(1080deg) scale(1);
-    }
-}
-</style>
-
 <body>
-
-    <!-- PANTALLA DE INICIO -->
-<div id="splash">
-    <img src="pdc.png.jpg" id="logo">
-</div>
 
 <!-- 🔥 MENÚ PRINCIPAL -->
 <div id="menu">
@@ -142,7 +100,7 @@ a:hover {
 
     <button onclick="mostrar('adoracion')">Adoración</button>
     <button onclick="mostrar('avivamiento')">Avivamiento</button>
-     <button onclick="mostrar('cumpleaños')">cumpleaños</button>
+    <button onclick="mostrar('cumpleaños')">cumpleaños</button>
 </div>
 
 <!-- 🎵 ADORACIÓN -->
@@ -183,7 +141,6 @@ a:hover {
 
     <button onclick="volver()">⬅ Volver</button>
 
-<script>
 // 🔁 MOSTRAR SECCIÓN
 function mostrar(tipo) {
     document.getElementById("menu").style.display = "none";
